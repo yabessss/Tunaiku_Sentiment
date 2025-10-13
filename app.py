@@ -26,7 +26,7 @@ tab1,tab2 = st.tabs(['Prediksi Sentimen Analisis Pengguna','Informasi Model Anal
 
 with tab1:
     st.subheader("📊 Informasi Akurasi Model (Model SVM + XGBoost)")
-    st.metric(label="Akurasi Model", value=f"{accuracy*100:.2f}%")
+    st.write('Akurasi Model: 93.05%')
     # Input review
     coms = st.text_input('Masukkan Review Anda Tentang Aplikasi Kami')
     # Tombol submit 
