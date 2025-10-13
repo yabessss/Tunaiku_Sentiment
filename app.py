@@ -11,8 +11,9 @@ import time
 model = pickle.load(open('voting_clf.pkl', 'rb'))
 vectorizer = pickle.load(open('tfidf_vectorizer.pkl', 'rb'))
 
-# Misal kamu punya data uji disimpan di 'test_data.csv'
 data = pd.read_csv('data_tunaiku.csv')
+data = data.dropna(subset=['final_text'])
+
 X_test = vectorizer.transform(data['final_text'])
 y_test = data['label']
 
