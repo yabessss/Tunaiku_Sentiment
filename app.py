@@ -30,21 +30,23 @@ with tab1:
     coms = st.text_input('Masukkan Review Anda Tentang Aplikasi Kami')
     # Tombol submit 
     submit = st.button('Prediksi')
+
     if submit:
         if coms.strip() == "":
             st.warning("Mohon masukkan review terlebih dahulu.")
-    else:
-        start = time.time()
-        transformed_text = vectorizer.transform([coms]).toarray()
-        transformed_text = transformed_text.reshape(1, -1)
-        prediction = model.predict(transformed_text)
-        end = time.time()
-
-        st.write('Waktu prediksi: ', round(end - start, 2), 'detik')
-        if prediction[0] == 1:
-            st.success("Sentimen review Anda **positif**.")
         else:
-            st.error("Sentimen review Anda **negatif**.")
+            start = time.time()
+            transformed_text = vectorizer.transform([coms]).toarray()
+            transformed_text = transformed_text.reshape(1, -1)
+            prediction = model.predict(transformed_text)
+            end = time.time()
+    
+            st.write('Waktu prediksi: ', round(end - start, 2), 'detik')
+            if prediction[0] == 1:
+                st.success("Sentimen review Anda **positif**.")
+            else:
+                st.error("Sentimen review Anda **negatif**.")
+
 with tab2:
     st.image('acc_graph.png')
     st.write('')
